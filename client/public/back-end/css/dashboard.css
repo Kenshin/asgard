@@ -1,0 +1,77 @@
+/* ovrride bootstrap css */
+.span5 {
+	width: 475px;
+}
+
+.btn-toolbar {
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+.btn-group > .btn {
+	float: none;
+}
+
+.dropdown-menu {
+	min-width: 97px;
+}
+
+.page-header {
+	padding-bottom: 0;
+	border-bottom: 0;
+	margin: 0 0 30px 0
+}
+
+.modal-header {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.modal-body {
+	padding: 20px;
+}
+
+.modal-footer {
+	padding-right: 20px;
+}
+
+/* dashboard css */
+
+.center {
+	text-align: center;
+}
+
+.btn-load {
+	background-color: #D44413;
+	font-size: 13px;
+	width: 40%;
+}
+
+.add-content-control {
+	padding-top: 19px;
+}
+
+/* modal */
+
+.input {
+	width: 509px;
+	height:26px;
+}
+
+.short-width {
+	width: 408px;
+}
+
+.dropdown-height {
+	height: 38px;
+}
+
+.contol-button-height {
+	height: 38px;
+	width: 68px;
+}
+
+.category-modal-body,
+.profile-modal-body {
+	padding-top: 30px;
+}

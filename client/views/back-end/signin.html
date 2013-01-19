@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<script src="/comm/jquery-1.7.2.min.js"></script>
+
+		<!-- bootstrap -->
+		<script src="/back-end/bootstrap/js/bootstrap-button.js"></script>
+		<link href="/back-end/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="/back-end/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+
+		<!-- validation -->
+		<script src="/back-end/validation/js/jquery.validationEngine.js"></script>
+		<script src="/back-end/validation/js/jquery.validationEngine-zh_CN.js"></script>
+		<link href="/back-end/validation/css/validationEngine.jquery.css" rel="stylesheet" />
+		
+	    <!-- common css -->
+	    <link href="/back-end/css/common.css" rel="stylesheet"/>
+		<!-- signin -->
+		<link href="/back-end/css/signin.css" rel="stylesheet"/>
+
+		<title>AsGard -- 基于Node.js的开源、小型、多人日志系统</title>
+
+		<script>
+
+			$( document ).ready( function() {
+
+				//set role remember
+				$( '#role' ).val( 'operator' );
+				$( '#remember' ).val( 'no' );
+
+				//validation
+				$( "#signin" ).validationEngine();
+
+			});
+
+			/**
+			 * role radio button group click
+			 */
+			function roleGroupClick( value ) {
+				//set active
+				$( '#btn' + ( value == 'admin' ? 'Admin' : 'Operator' )).removeClass();
+				$( '#btn' + ( value == 'admin' ? 'Admin' : 'Operator' )).addClass( 'btn btn-warning active' );
+				//set no-active
+				$( '#btn' + ( value == 'admin' ? 'Operator' : 'Admin' )).removeClass();
+				$( '#btn' + ( value == 'admin' ? 'Operator' : 'Admin' )).addClass( 'btn btn-success' );
+				//set role
+				$( '#role' ).val( value );
+			}
+
+			/**
+			 * role radio button group click
+			 */
+			function rememberGroupClick( value ) {
+				//set active
+				$( '#btn' + ( value == 'yes' ? 'Remember' : 'NoRemember' )).removeClass();
+				$( '#btn' + ( value == 'yes' ? 'Remember' : 'NoRemember' )).addClass( 'btn btn-warning active' );
+				//set no-active
+				$( '#btn' + ( value == 'yes' ? 'NoRemember' : 'Remember' )).removeClass();
+				$( '#btn' + ( value == 'yes' ? 'NoRemember' : 'Remember' )).addClass( 'btn btn-success' );
+				//set remember
+				$( '#remember' ).val( value );
+			}
+
+			/**
+			 * on foucus event handler
+			 */
+			function onfocusEventHandler() {
+				$( '#msgBar' ).fadeOut( 1000 );
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<section class="header">
+			<div class="logo">
+				<span class="title">ASGARD</span>
+				<span class="sub-title">（后台管理）</span>
+				<span class="nav-title">登陆</span>
+			</div>
+		</section>
+
+		<section class="contents">
+
+	        <form id="signin" method="post" action="/asgard-signin">
+
+				<%	if ( message != 'init' ) { %>
+
+					<div id="msgBar" class="message-bar alert alert-error">
+						<strong>用户名/密码错误，请重新输入！</strong>
+					</div>
+
+				<%  } %>
+
+				<div class="hidden">
+					<input id="role"     type="hidden" name="role" >
+					<input id="remember" type="hidden" name="remember" >
+				</div>
+
+	            <table>
+
+	                <tbody>
+
+	                  <tr>
+	                    <td>
+							<input 
+								id="username" 
+								class="validate[required, custom[onlyLetterNumber]] input-xlarge input" data-prompt-position="centerRight:-400" 
+								type="text" name="username" 
+								tabindex="1" 
+								placeholder="用户名" 
+								onfocus="onfocusEventHandler()">
+	                    </td>
+	                  </tr>
+
+	                  <tr>
+	                    <td>
+							<input 
+								id="password" 
+								class="validate[required] input-xlarge input" data-prompt-position="centerRight:-400" 
+								type="password" name="password" 
+								tabindex="2" 
+								placeholder="密码">
+	                    </td>
+	                  </tr>
+
+	                  <tr>
+	                    <td>
+							<div class="btn-toolbar">
+
+									<div class="btn-group" data-toggle="buttons-radio">
+										<label id="btnAdmin" class="btn btn-success" onclick="roleGroupClick('admin')" name="ssss">管理员</label>
+										<label id="btnOperator" class="btn btn-warning active" onclick="roleGroupClick('operator')">操作员</label>
+									</div>
+
+									<div class="btn-group" data-toggle="buttons-radio">
+										<label id="btnRemember" class="btn btn-success" onclick="rememberGroupClick( 'yes' );">保持登陆状态</label>
+										<label id="btnNoRemember" class="btn btn-warning active" onclick="rememberGroupClick( 'no' );">不保持登陆状态</label>
+									</div>
+
+							</div>
+	                    </td>
+	                  </tr>
+
+	            	</tbody>
+
+	            </table>
+
+				<button id="btnLogin" type="submit" class="btn-signin btn btn-primary">
+				　登　陆　 
+				</button>
+
+	        </form>
+
+		</section>
+
+    	<!--- footer -->
+		<%- partial( "footer" ) %>
+
+	</body>
+
+</html>

@@ -1,0 +1,34 @@
+/**
+* override bootstrap css
+*/
+
+.btn-toolbar {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align:center;
+	height: 28px;
+}
+
+/* 覆盖common/contents部 */
+.contents {
+	width: 500px;
+}
+
+/* signin css */
+
+.message-bar {
+	margin-left: 4px;
+	margin-right: 4px;
+	padding-top: 4px;
+	height : 14px;
+}
+
+.input {
+	width: 489px;
+	height:26px;
+}
+
+.btn-signin {
+	width: 100%;
+	height: 38px;
+}

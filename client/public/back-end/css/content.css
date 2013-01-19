@@ -1,0 +1,59 @@
+/**
+* override bootstrap css
+*/
+
+.btn-toolbar {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.btn-group > .btn {
+	float: none;
+}
+
+.dropdown-menu {
+	min-width: 145px;
+	z-index: 999999;
+}
+
+/* 覆盖common/contents部 */
+.contents {
+	padding-bottom: 20px;
+}
+
+/* content css */
+
+.divider-vertical-2 {
+	width: 10px;
+	margin: 10px 9px;
+}
+
+.input {
+	width: 969px;
+	height:26px;
+}
+
+.url {
+	width: 820px;
+}
+
+.categories {
+	height: 38px;
+	width: 145px;
+}
+
+.redactor_box {
+	width: 978px;
+}
+
+.content-width {
+	height: 300px;
+}
+
+.btn-width {
+	width: 324px;
+}
+
+.a-width {
+	width: 294px;
+}

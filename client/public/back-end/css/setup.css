@@ -1,0 +1,42 @@
+/**
+* override bootstrap css
+*/
+
+.btn-toolbar {
+	margin-bottom: 0;
+}
+
+.btn-group > .btn {
+	float: none;
+}
+
+.dropdown-menu {
+	z-index: 999999;
+	min-width: 97px;
+}
+
+/* 覆盖common/contents部 */
+.contents {
+	padding-top: 21px;
+	width: 500px;
+}
+
+/* setup css */
+
+.input {
+	width: 489px;
+	height:26px;
+}	
+
+.short-width {
+	width: 388px;
+}
+
+.dropdown-height {
+	height: 38px;
+}
+
+.btn-signup {
+	width: 100%;
+	height: 38px;
+}

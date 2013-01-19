@@ -1,0 +1,102 @@
+/* 全局变量 */
+html {
+	display: block;
+}
+
+head {
+	display: none;
+}
+
+body {
+	margin: 0;
+	background: url( assets/options-bg.png ) repeat;
+	font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,"Microsoft YaHei",sans-serif;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	-moz-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	-webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	background-clip: padding-box;
+	border-radius: 0.6em 0.6em 0.6em 0.6em;
+	border: 1px solid #B3B3B3;
+	color: #333333;
+	text-shadow: 0 1px 0 #FFFFFF;
+	padding : 5px 0 5px 9px;
+}
+
+td {
+	padding-bottom: 10px;
+}
+
+/* header部 */
+.header {
+	position: relative;
+	background: repeat-x;
+	background-image: url( assets/header-bg.png );
+	background-position: left -0px;
+	height: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.header .logo {
+	display: inline-block;
+	padding-left: 55px;
+	height: 48px;
+	line-height: 48px;
+	background: no-repeat;
+}
+
+.title {
+	//background: rgb(31, 29, 27);
+	color: #616161;
+	background-clip: text;
+	-webkit-background-clip: text;
+	text-shadow: rgba(255, 255, 255, 0.1) 0 0 1px;
+	font-weight: bold;
+	vertical-align: middle;
+	font-size: 30px;
+}
+
+.sub-title {
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	font-size: 20px;
+	color: rgb(97, 97, 97);
+	vertical-align: middle;
+}
+
+.nav-title {
+	margin-left: 10px;
+	border-left: 1px solid rgb(194, 194, 194);
+	padding-left: 10px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 20px;
+	color: rgb(97, 97, 97);
+	vertical-align: middle;
+}
+
+/* contents部 */
+.contents {
+	width: 980px;
+	position: relative;
+	margin: 6px auto;
+	padding: 30px 20px 30px 20px;
+	background: url( assets/content-bg.png ) repeat;
+	-webkit-box-shadow:2px 2px 5px #333333
+}
+
+/* footer部 */
+.footer {
+	padding-top : 15px;
+	text-align:center;
+}

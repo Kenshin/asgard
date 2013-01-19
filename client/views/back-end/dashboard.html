@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <!-- common js -->
+    <script src="/comm/jquery-1.7.2.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="/back-end/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/back-end/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/back-end/bootstrap/js/application.js"></script>
+    <link href="/back-end/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/back-end/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/back-end/bootstrap/css/docs.css" rel="stylesheet" />
+
+    <!-- validation -->
+    <script src="/back-end/validation/js/jquery.validationEngine.js"></script>
+    <script src="/back-end/validation/js/jquery.validationEngine-zh_CN.js"></script>
+    <link href="/back-end/validation/css/validationEngine.jquery.css" rel="stylesheet" />
+
+    <!-- pageguide -->
+    <script src="/back-end/pageguide/js/pageguide.min.js"></script>
+    <link href="/back-end/pageguide/css/pageguide.min.css" rel="stylesheet" />
+   
+    <!-- common css -->
+    <link href="/back-end/css/common.css" rel="stylesheet"/>
+    <!-- dashboard css -->
+    <link href="/back-end/css/dashboard.css" rel="stylesheet"/>
+
+    <title>AsGard -- 基于Node.js的开源、小型、多人日志系统</title>
+
+    <script>
+
+      $( document ).ready( function() {
+        //validation
+        $( "#form" ).validationEngine();
+        $( "#cateForm" ).validationEngine();
+
+        tl.pg.init();
+      });
+
+      /**
+      * remove current content
+      */
+      function deleteContent( uid ) {
+        $.get( "/dashboard/content/delete/" + uid, function( data ) {
+          if ( data == 'success' ) {
+            $( '#content' + uid ).remove()
+            if ( $.trim( $( '#tbody' ).html()) == '' ) {
+              var str = $( '#member' ).val() == 'admin' ? '<div class="center">无内容，请使用 操作员 帐号登陆，并创建新内容</div>' 
+                                                        : '<div class="center">无内容，请 <a href="/dashboard/content/new">创建新内容</a></div>'
+              $( '#contentTable' ).html( str );
+            }
+          }
+        });
+      }
+
+      /**
+      * load more conents
+      */
+      function loadMoreContens() {
+        $( '#nextPage' ).remove();
+        $( '#lastPage' ).remove();
+        $.get( "/dashboard/content/page/" + $( '#btnLoad' ).attr( 'name' ) , function( result ) {
+          $( '#tbody' ).append( result );
+          $( '#btnLoad' ).attr( 'name', $( '#nextPage' ).val());
+          if ( $( '#nextPage' ).val() >= $( '#lastPage' ).val() + 1 ) {
+            $( '#btnLoad' ).hide();
+          }
+        });
+      }
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      /**
+      * add operator modal
+      */
+      function addOperator() {
+        $( '#operatorModal' ).modal({
+          keyboard: true,
+          show : true,
+          backdrop : 'static'
+        })
+        //初期化modal
+        $( '#titleModal' ).text( '创建一个新账户' );
+        $( '#btnModal' ).text( '创建' );
+        $( '#form' ).attr( 'action', '/dashboard/operator/add' );
+        $( '#username' ).val( '' );
+        $( '#password' ).val( '' );
+        $( '#repsd' ).val( '' );
+        $( '#alias' ).val( '' );
+        $( '#email' ).val( '' );
+      }
+
+      /**
+      * update operator
+      */
+      function updateOperator( username ) {
+        $.get( "/dashboard/operator/edit/" + username, function( data ) {
+          $( '#operatorModal' ).html( data );
+          $( '#operatorModal' ).modal({
+            keyboard: true,
+            show : true,
+            backdrop : 'static'
+          });
+          //validation
+          $( "#form" ).validationEngine();
+        });
+      }
+
+      /**
+      * verifysubmit
+      */
+      function verifysubmit() {
+        if ( $( '#form' ).validationEngine('validate') == true ) {
+          if ( $( '#orgUsername' ).val() != $( '#username' ).val() ) {
+            $.get( "/dashboard/operator/checkunique/" + $( '#username' ).val(), function( result ) {
+              if ( result == 'success' ) {
+
+                if ( $( '#password' ).val() != $( '#repsd' ).val() ) {
+                  $( '#repsd' ).removeClass();
+                  $( '#repsd' ).addClass( 'input' );
+                  $( '#repsd' ).validationEngine( 'showPrompt', '两次输入不一致', 'topLeft' );
+                 }
+                 else {
+                  $( '#submit' ).trigger( 'click' );
+                 }
+              }
+              else {
+                $( '#username' ).removeClass();
+                $( '#username' ).addClass( 'input short-width' );
+                $( '#username' ).validationEngine( 'showPrompt', '用户名重复', 'topLeft' );
+             }
+            });
+          }
+          else {
+            if ( $( '#password' ).val() != $( '#repsd' ).val() ) {
+              $( '#repsd' ).removeClass();
+              $( '#repsd' ).addClass( 'input' );
+              $( '#repsd' ).validationEngine( 'showPrompt', '两次输入不一致', 'topLeft' );
+             }
+             else {
+              $( '#submit' ).trigger( 'click' );
+             }
+          }
+        }
+      }
+
+      /**
+      * add verify
+      */
+      function addvalidate() {
+        $( '#username' ).validationEngine( 'hide' );
+        $( '#username' ).addClass( 'validate[required, custom[onlyLetterNumber]]' );
+      }
+
+      /**
+      * add verify
+      */
+      function addRepsdValidate() {
+        $( '#repsd' ).validationEngine( 'hide' );
+        $( '#repsd' ).addClass( 'validate[required]' );
+      }
+
+      /**
+      * delete operator
+      */
+      function deleteOperator( username ) {
+        $.get( "/dashboard/operator/delete/" + username, function( data ) {
+          if ( data == 'success' ) {
+            $( '#operator-' + username ).remove()
+            if ( $.trim( $( '#operatorTbody' ).html()) == '' ) {
+              $( '#operatorTable' ).remove();
+            }
+          }
+        });
+      }
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      /**
+      * add category modal
+      */
+      function addCategory() {
+        $( '#categoryModal' ).modal({
+          keyboard: true,
+          show : true,
+          backdrop : 'static'
+        })
+        //初期化modal
+        $( '#cateTitle' ).text( '创建一个新账户' );
+        $( '#btnCate' ).text( '创建' );
+        $( '#cateForm' ).attr( 'action', '/dashboard/category/add' );
+        $( '#catename' ).val( '' );
+        $( '#catealias' ).val( '' );
+      }
+
+      /**
+      * update( edit + save ) category
+      */
+      function updateCategory( catename ) {
+        $.get( "/dashboard/category/edit/" + catename, function( data ) {
+          $( '#categoryModal' ).html( data );
+          $( '#categoryModal' ).modal({
+            keyboard: true,
+            show : true,
+            backdrop : 'static'
+          });
+          //validation
+          $( "#cateForm" ).validationEngine();
+        });
+      }
+
+      /**
+      * verify category
+      */
+      function verifyCateSubmit() {
+        if ( $( '#cateForm' ).validationEngine( 'validate' ) == true ) {
+          if ( $( '#orgCatename' ).val() != $( '#catename' ).val() ) {
+            $.get( "/dashboard/category/checkunique/" + $( '#catename' ).val(), function( result ) {
+              if ( result == 'success' ) {
+                $( '#cateSubmit' ).trigger( 'click' );
+              }
+              else {
+                $( '#catename' ).removeClass();
+                $( '#catename' ).addClass( 'input' );
+                $( '#catename' ).validationEngine( 'showPrompt', '分类名重复', 'topLeft' );
+              }
+            });
+          }
+          else {
+            $( '#cateSubmit' ).trigger( 'click' );
+          }
+        }
+      }
+
+      /**
+      * add verify
+      */
+      function addCateValidate() {
+        $( '#catename' ).validationEngine( 'hide' );
+        $( '#catename' ).addClass( 'validate[required, custom[onlyLetterNumber]]' );
+      }
+
+      /**
+      * delele category
+      */
+      function deleteCategory( catename ) {
+        $.get( "/dashboard/category/delete/" + catename, function( result ) {
+
+          if ( result == 'success' ) {
+            $( '#category-' + catename ).remove()
+            if ( $.trim( $( '#categoriesTbody' ).html()) == '' ) {
+              $( '#categoriesTable' ).remove();
+            }
+          }
+        });
+      }
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      /**
+      * update Profile
+      */
+      function updateProfile() {
+          $( '#profileModal' ).modal({
+            keyboard: true,
+            show : true,
+            backdrop : 'static'
+          });
+          //validation
+          $( "#profileForm" ).validationEngine();
+      }
+
+      /**
+      * verify profile submit
+      */
+      function verifyProfileSubmit() {
+        if ( $( '#profileForm' ).validationEngine('validate') == true ) {
+          if ( $( '#profilepsd' ).val() != $( '#reprofilepsd' ).val() ) {
+            $( '#reprofilepsd' ).removeClass();
+            $( '#reprofilepsd' ).addClass( 'input' );
+            $( '#reprofilepsd' ).validationEngine( 'showPrompt', '两次输入不一致', 'topLeft' );
+           }
+           else {
+            $( '#profileSubmit' ).trigger( 'click' );
+           }
+        }
+      }
+
+      /**
+      * add verify
+      */
+      function addProfileRepsdValidate() {
+        $( '#reprofilepsd' ).validationEngine( 'hide' );
+        $( '#reprofilepsd' ).addClass( 'validate[required]' );
+     }
+
+    </script>
+
+  </head>
+
+  <body>
+
+    <section class="hidden">
+      <input id="member" type="hidden" value="<%- member.role %>">
+    </section>
+
+    <section class="header">
+      <div class="logo">
+        <span class="title">ASGARD</span>
+        <span class="sub-title">（后台管理）</span>
+        <span class="nav-title">首页</span>
+      </div>
+    </section>
+
+    <section class="navbar">
+
+      <div class="navbar-inner">
+        <div class="container">
+
+          <a class="brand" href="/" target="_blank" title="返回首页">AsGard</a>
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              <% if ( member.role == 'admin' ) { %>
+                <li><a href="#admin">账户管理</a></li>
+                <li><a href="#admin">分类管理</a></li>
+              <% } %>
+              <li class="active"><a href="#contents">内容管理</a></li>
+            </ul>
+          </div>
+
+          <ul class="nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">你好， <%- member.alias %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:void(0)" onclick="updateProfile()">账户设置</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li><a href="/signout">安全退出</a></li>
+          </ul>
+
+        </div>
+      </div>
+
+    </section>
+
+    <section class="contents">
+
+          <% if ( member.role == 'admin' ) { %>
+
+            <ul id="tlyPageGuide" data-tourtitle="使用向导">
+              <li data-tourtarget=".first_element_to_target">
+              <div>
+                帐号管理，可以对其增加、修改、删除
+              </div>
+              </li>
+              <li data-tourtarget=".second_element_to_target">
+              <div>
+                分类管理，可以对其增加、修改、删除
+              </div>
+              </li>
+              <li data-tourtarget=".third_element_to_target">
+              <div>
+                内容管理，管理员可以对其进行修改和删除操作，但是管理员没有权限增加内容（只有操作员具有此权限）
+              </div>
+              </li>
+            </ul>
+
+            <section id="admin" class="admin-sec row show-grid">
+
+              <div class="span5 first_element_to_target">
+
+                <div class="page-header">
+                  <h1>账户管理</h1>
+                </div>
+
+                <% if ( operators != null && operators.length > 0 ) { %>
+                  <table id="operatorTable" class="table table-bordered">
+
+                    <thead>
+                      <tr>
+                        <th>用户名</th>
+                        <th>别名</th>
+                        <th>邮箱</th>
+                        <th>权限</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="operatorTbody">
+                      <% operators.forEach( function( operator ) { %>
+                        <tr id="operator-<%- operator.username %>">
+                          <td><%- operator.username %></td>
+                          <td><%- operator.alias %></td>
+                          <td><%- operator.email %></td>
+                          <td><%- operator.role %></td>
+                          <td><a href="javascript:void(0)" onclick="updateOperator('<%- operator.username %>')">修改</a> | <a href="javascript:void(0)" onclick="deleteOperator('<%- operator.username %>')">删除</a></td>
+                        </tr>
+                      <% }) %>
+                    </tbody>
+
+                  </table>
+                <% } %>
+
+                <% if ( operators != null && operators.length == 0 ) { %>
+                  <div class="center">无任何操作员，请 <a href="javascript:void(0)" onclick="addOperator()">创建</a></div>
+                <% } else { %>
+                  <div class="center"><a href="javascript:void(0)" onclick="addOperator()">创建一个新账户</a></div>
+                <% } %>
+
+              </div>
+
+              <div class="span5 second_element_to_target">
+
+                <div class="page-header">
+                  <h1>分类管理</h1>
+                </div>
+
+                <% if ( categories != null && categories.length > 0 ) { %>
+                  <table id="categoriesTable" class="table table-bordered">
+
+                    <thead>
+                      <tr>
+                        <th>分类名</th>
+                        <th>别名</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="categoriesTbody">
+                      <% categories.forEach( function( category ) { %>
+                        <tr id="category-<%- category.catename %>">
+                          <td><%- category.catename  %></td>
+                          <td><%- category.alias %></td>
+                          <td><a href="javascript:void(0)" onclick="updateCategory('<%- category.catename %>')">修改</a> | <a href="javascript:void(0)" onclick="deleteCategory('<%- category.catename %>')">删除</a></td>
+                        </tr>
+                      <% }) %>
+                    </tbody>
+
+                  </table>
+                <% } %>
+
+                <% if ( categories != null && categories.length == 0 ) { %>
+                  <div class="center">无任何分类，请 <a href="javascript:void(0)" onclick="addCategory()">创建</a></div>
+                <% } else { %>
+                  <div class="center"><a href="javascript:void(0)" onclick="addCategory()">创建一个新类别</a></div>
+                <% } %>
+                  
+              </div>
+
+              <div id="operatorModal" class="modal hide fade">
+                <%- partial( "operator-modal" ) %>
+              </div>
+
+              <div id="categoryModal" class="modal hide fade">
+                <%- partial( "category-modal" ) %>
+              </div>
+
+            </section>
+
+          <% } %>
+
+          <section id="contents" class="third_element_to_target">
+
+            <div class="page-header center">
+              <h1>内容管理</h1>
+            </div>
+
+            <div id="contentTable">
+              <% if ( contents != null && contents.length > 0 ) { %>
+                <table class="table table-bordered">
+
+                  <thead>
+                    <tr>
+                      <th>序号</th>
+                      <th>标题</th>
+                      <th>分类</th>
+                      <th>作者</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="tbody">
+                    <% var count = 1 %>
+                    <% contents.forEach( function( content ) { %>
+                      <tr id="content<%- content.uid %>">
+                        <td><%- count++ %></td>
+                        <td><%- content.title %></td>
+                        <td><%- content.catealias %></td>
+                        <td><%- content.username %></td>
+                        <td><a href="/dashboard/content/edit/<%- content.uid %>">修改</a> | <a href="javascript:void(0)" onclick="deleteContent(<%- content.uid %>)">删除</a></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+
+                </table>
+
+                <% if ( pv != null && pv.isnext ) { %>
+                  <div class="center">
+                    <a 
+                      id="btnLoad" name="<%- pv.next %>"
+                      class="label btn-load"
+                      href="javascript:void(0)"
+                      onclick="loadMoreContens()">
+                      　加载更多　
+                    </a>
+                  </div>
+                <% } %>
+
+                <% if ( member.role != 'admin' ) { %>
+                  <div class="center add-content-control">
+                    <a class="btn btn-primary btn-large" href="/dashboard/content/new" style="width:80%"><i class="icon-plus icon-white"></i>　创建新内容　</a>
+                  </div>
+                <% } %>
+
+              <% } else { %>
+                <div class="center">无内容，请 <%- member.role == 'admin' ? '使用【操作员】帐号登陆，并创建新内容' : '<a href="/dashboard/content/new">创建新内容</a>' %></div>
+              <% } %>
+            </div>
+
+          </section>
+
+          <section id="profileModal" class="modal hide fade">
+            <%- partial( "profile-modal" ) %>
+          </section>
+
+    </section>
+
+    <!--- footer -->
+    <%- partial( "footer" ) %>
+
+  </body>
+
+</html>

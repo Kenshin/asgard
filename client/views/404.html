@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<script src="comm/jquery-1.7.2.min.js"></script>
+
+		<script src="back-end/bootstrap/js/bootstrap-button.js"></script>
+
+		<link href="back-end/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="back-end/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		
+		<link href="back-end/css/login.css" rel="stylesheet"/>
+
+		<script>
+
+			$( document ).ready( function() {
+
+			});
+
+			function login() {
+				$.post( '/asgard-login', { name: "John", time: "2pm" } );
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="header">
+			<div class="logo">
+				<span class="title">ASGARD</span>
+				<span class="subtitle">（后台管理）</span>
+				<span class="nav">登陆</span>
+			</div>
+		</div>
+
+		<center class="content">
+
+			神马都没有啊...
+
+		</center>
+
+		<center class="footer">
+			<a href="http://www.k-zone.cn/project/asgard.html" target="_blank">项目主页</a> ver 1.0 | code by <a href="http://weibo.com/23784148" target="_blank">Kenshin</a> kenshin@ksria.com
+		</center>
+
+	</body>
+
+</html>

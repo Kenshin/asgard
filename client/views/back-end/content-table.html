@@ -1,0 +1,12 @@
+                  <% var count = ( pv.next - 1 ) * pv.pagesize - pv.pagesize + 1 %>
+                  <% contents.forEach( function( content ) { %>
+                    <tr id="content<%- content.uid %>">
+                      <td><%- count++ %></td>
+                      <td><%- content.title %></td>
+                      <td><%- content.catealias %></td>
+                      <td><%- content.username %></td>
+                      <td><a href="/dashboard/content/edit/<%- content.uid %>">修改</a> | <a href="javascript:void(0)" onclick="deleteContent(<%- content.uid %>)">删除</a></td>
+                    </tr>
+                  <%  }) %>
+                  <input id="nextPage" type="hidden" value="<%- pv.next %>">
+                  <input id="lastPage" type="hidden" value="<%- pv.lastpage %>">

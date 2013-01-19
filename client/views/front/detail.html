@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+        
+        <meta charset="UTF-8" />
+        <meta content="True" name="HandheldFriendly" />
+        
+        <title>AsGard -- 基于Node.js的开源、小型、多人日志系统 | <%- content.title %></title>
+        
+        <link rel="stylesheet" type="text/css" media="screen" href="/front/css/shared.css?v=0.0.1" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/front/css/desktop.css?v=0.0.1" />
+        
+        <script src="/comm/jquery-1.9.0.min.js"></script>
+        
+    </head>
+    
+    <body>
+        
+        <div id="Wrapper">
+            
+            <div class="content">
+                
+                <div id="Leftbar"></div>
+                
+                <div id="Rightbar">
+                    
+                    <div class="sep70"></div>
+                    
+                    <div class="box">
+
+                        <div class="cell">
+                            <span class="fade">
+                                分类
+                            </span>
+                        </div>
+                        
+                        <% categories.forEach( function( category ) { %>
+                            <div class="cell">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    <tr>
+                                        <td width="auto" valign="middle">
+                                            <span class="item_hot_topic_title">
+                                                <a href="/category/<%- category.catename %>">
+                                                   <%- category.alias  %>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        <% }) %>
+                        
+                    </div>
+
+                </div>
+                
+                <div id="Main">
+                    
+                    <div class="sep20"></div>
+                    
+                    <div class="box papaer detail_box_radius" style="border-bottom: 0px;">
+                        
+                        <div class="header">
+
+                            <div class="nav">
+                                
+                                <a href="/"><strong>首页</strong></a>
+    
+                                <span class="chevron">&nbsp;›&nbsp;</span>
+                                
+                                <a href="/category/<%- content.catename %>">
+                                    <strong><%- content.catealias %></strong>
+                                </a>
+                            
+                            </div>
+                                
+                            <div class="sep10 wrapper"></div>
+                            
+                            <div class="title">
+                                <h1><%- content.title %></h1>
+                                    
+                                <small class="gray">
+                                    By
+                                    <a href="/member/<%- content.username %>">
+                                        <%- content.username %>
+                                    </a>
+                                    &nbsp;
+                                </small>
+                            </div>
+
+                        </div>
+                                
+                        <div class="cell">
+                            <div class="topic_content">
+                                <%- content.content %>
+                            </div>
+                        </div>
+
+                        <div class="topic_buttons">
+                            
+                            <div class="fr gray f11" style="line-height: 12px; padding-top: 3px; text-shadow: 0px 1px 0px #fff;"></div>
+                            <div id="topic_thank"></div>
+                            
+                        </div>
+                            
+                    </div>
+                    
+                    <div class="sep20"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--- footer -->
+        <%- partial( "footer" ) %>
+                    
+    </body>
+
+</html>

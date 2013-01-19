@@ -1,0 +1,63 @@
+                <%
+                  if ( category == null ) {
+                    var category = {}
+                    category.catename = ''
+                    category.alias    = ''
+                  }
+                %>
+                <form id="cateForm" method="post" action="/dashboard/category/save/<%- category.catename %>">
+
+                  <div class="hidden">
+                    <input id="orgCatename" name="orgcatename" type="hidden" value="<%- category.catename %>">
+                    <button id="cateSubmit" class="btn btn-primary" style="display:none;"></button>
+                  </div>
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 id="cateTitle">修改当前类别</h3>
+                  </div>
+
+                  <div class="modal-body category-modal-body">
+
+                      <table>
+
+                        <tbody>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="catename" 
+                                type="text" 
+                                name="catename" 
+                                class="input validate[required, custom[onlyLetterNumber]]" data-prompt-position="centerRight:-200" 
+                                placeholder="分类名，只能是数字和字母（不能为空）" 
+                                value="<%- category.catename %>"
+                                onclick="addCateValidate()">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="catealias" 
+                                type="text" 
+                                name="catealias" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="分类别名，可以是任何内容（不能为空）"
+                                value="<%- category.alias %>">
+                            </td>
+                          </tr>
+
+                        </tbody>
+
+                      </table>
+                    
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn contol-button-height" data-dismiss="modal">取消</button>
+                    <button id="btnCate" type="button" class="btn btn-primary contol-button-height" onclick="verifyCateSubmit()">修改</button>
+                    
+                  </div>
+
+                </form>

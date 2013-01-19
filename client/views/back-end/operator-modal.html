@@ -1,0 +1,118 @@
+                <%
+                  if ( operator == null ) {
+                    var operator = {}
+                    operator.username = ''
+                    operator.password = ''
+                    operator.alias    = ''
+                    operator.email    = ''
+                  }
+                %>
+                <form id="form" method="post" action="/dashboard/operator/save/<%- operator.username %>">
+
+                  <div class="hidden">
+                    <input type="hidden" name="role"  value="operator">
+                    <input id="orgUsername" name="orgusername" type="hidden" value="<%- operator.username %>">
+                    <button id="submit" class="btn btn-primary" style="display:none;"></button>
+                  </div>
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 id="titleModal">修改当前账户</h3>
+                  </div>
+
+                  <div class="modal-body">
+
+                      <table>
+
+                        <tbody>
+
+                          <tr>
+                            <td>
+
+                              <div class="btn-toolbar">
+
+                                <input 
+                                  id="username" 
+                                  type="text" 
+                                  name="username" 
+                                  class="input short-width validate[required, custom[onlyLetterNumber]]" data-prompt-position="centerRight:-200" 
+                                  placeholder="用户名，只能是数字和字母（不能为空）" 
+                                  value="<%- operator.username %>"
+                                  onclick="addvalidate()">
+
+                                <div class="btn-group"> 
+                                  <button id="roleCmb" class="btn btn-success dropdown-toggle dropdown-height" data-toggle="dropdown"> 
+                                    -- 操作员 -- 
+                                    <span class="caret"></span> 
+                                  </button> 
+                                  <ul class="dropdown-menu"> 
+                                    <li><a href="javascript:void(0)">操作员</a></li> 
+                                  </ul>
+                                </div>
+
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="password" 
+                                type="password" 
+                                name="password" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="用户密码，可以是任何内容（不能为空）"
+                                value="<%- operator.password %>">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="repsd" 
+                                type="password" 
+                                name="repsd" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="请再次输入密码（不能为空）"
+                                value="<%- operator.password %>"
+                                onclick="addRepsdValidate()">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="alias" 
+                                type="text" 
+                                name="alias" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="用户别名，可以是任何内容（不能为空）"
+                                value="<%- operator.alias %>">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="email" 
+                                type="text" 
+                                name="email" 
+                                class="input validate[required, custom[email]]" data-prompt-position="centerRight:-200" 
+                                placeholder="邮箱，只能输入合法的邮箱，如：aaa@bbb.ccc（不能为空）"
+                                value="<%- operator.email %>">
+                            </td>
+                          </tr>
+
+                        </tbody>
+
+                      </table>
+                    
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn contol-button-height" data-dismiss="modal">取消</button>
+                    <button id="btnModal" type="button" class="btn btn-primary contol-button-height" onclick="verifysubmit()">修改</button>
+                    
+                  </div>
+
+                </form>

@@ -1,0 +1,80 @@
+                <form id="profileForm" method="post" action="/dashboard/<%- member.role %>/profile/<%- member.username %>">
+
+                  <div class="hidden">
+                    <input type="hidden" name="role"      value="<%- member.role %>">
+                    <input type="hidden" name="username"  value="<%- member.username %>">
+                    <button id="profileSubmit" class="btn btn-primary" style="display:none;"></button>
+                  </div>
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3><%- member.username %>的账户信息</h3>
+                  </div>
+
+                  <div class="modal-body profile-modal-body">
+
+                      <table>
+
+                        <tbody>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="profilepsd" 
+                                type="password" 
+                                name="password" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="用户密码，可以是任何内容（不能为空）"
+                                value="<%- member.password %>">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="reprofilepsd" 
+                                type="password" 
+                                name="repsd" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="请再次输入密码（不能为空）"
+                                value="<%- member.password %>"
+                                onclick="addProfileRepsdValidate()">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="alias" 
+                                type="text" 
+                                name="alias" 
+                                class="input validate[required]" data-prompt-position="centerRight:-200" 
+                                placeholder="用户别名，可以是任何内容（不能为空）"
+                                value="<%- member.alias %>">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <input 
+                                id="email" 
+                                type="text" 
+                                name="email" 
+                                class="input validate[required, custom[email]]" data-prompt-position="centerRight:-200" 
+                                placeholder="邮箱，只能输入合法的邮箱，如：aaa@bbb.ccc（不能为空）"
+                                value="<%- member.email %>">
+                            </td>
+                          </tr>
+
+                        </tbody>
+
+                      </table>
+                    
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn contol-button-height" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary contol-button-height" onclick="verifyProfileSubmit()">修改</button>
+                  </div>
+
+                </form>
