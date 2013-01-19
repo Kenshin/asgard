@@ -1,16 +1,16 @@
-asgard
-======
-
 AsGard -- 基于Node.js的小型、多人日志系统
+======
 
 ## 应用说明：  
 * 可以用于搭建CMS系统；多人/单人Blog；小型团队日志系统等。
 
-## 技术选型：  
+## 搭建环境（技术选型）：  
 * Node.js
-* MongoDB（mongoose for node.js）
+* MongoDB
 * Coffee
 * express
+* ejs
+* mongoose
 * bootstrap（用于后台管理界面模板）
 
 ## 特点：  
