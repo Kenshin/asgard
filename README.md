@@ -27,8 +27,13 @@ AsGard -- 基于Node.js的小型、多人日志系统
 * 用户名：demo    密码：demo1
 
 ## 更新日志：
-* 前台管理：version 1.0.2 [2013-01-19]
-* 后台管理：version 0.6.0 [2013-01-18]
+前台：version 1.0.3 [2013-01-21]
+* 增加了favicon
+* 去掉了前端页面的jquery
+
+2013-01-19
+* 前台：version 1.0.2 [2013-01-19]
+* 后台：version 0.6.0 [2013-01-18]
 
 ## 联系方式：
 * 博客：[k-zone.cn](http://www.k-zone.cn/zblog)
