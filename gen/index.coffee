@@ -56,4 +56,4 @@ services.once 'services_connected_success', ( result ) ->
 	#test.contentsSave()
 services.once 'services_connected_error', ( error ) ->
 	console.log "error = #{ error }"
-services.connect( config.get_monog_url mongo )
+services.connect config.get_monog_url mongo

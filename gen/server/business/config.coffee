@@ -1,6 +1,9 @@
 exports.port    = process.env.VMC_APP_PORT or 10080
 exports.host    = process.env.VCAP_APP_HOST or 'localhost'
 
+#print process.env.VCAP_SERVICES
+console.log 'process.env.VCAP_SERVICES = ' + process.env.VCAP_SERVICES
+
 #判断是本机运行 还是 cloudfoundry 运行
 if process.env.VCAP_SERVICES
   env   = JSON.parse process.env.VCAP_SERVICES

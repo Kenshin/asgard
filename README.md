@@ -26,7 +26,61 @@ AsGard -- 基于Node.js的小型、多人日志系统
 * 登录地址：[http://asgard.cloudfoundry.com/asgard-signin](http://asgard.cloudfoundry.com/asgard-signin)
 * 用户名：demo    密码：demo1
 
+## 安装说明（以AppFog为例）：  
+* 需要操作系统用于Ruby与Gem环境。
+* 如gem版本过低，请使用gem update --system升级gem版本
+* 安装AF - gem install af
+* 登录AF - af login（appfog的帐号）
+* push xxx -runtime=node08
+* 控制台会打印并且需要录入如下内容：（以asgard为例，具体情况视你实际情况为准）
+Would you like to deploy from the current directory? [Yn]: y
+Detected a Node.js Application, is this correct? [Yn]: y
+1: AWS US East - Virginia
+2: AWS EU West - Ireland
+3: AWS Asia SE - Singapore
+4: Rackspace AZ 1 - Dallas
+5: HP AZ 2 - Las Vegas
+Select Infrastructure: 1
+Application Deployed URL [asgard.aws.af.cm]:
+Memory reservation (128M, 256M, 512M, 1G, 2G) [64M]: 128
+How many instances? [1]: 1
+Create services to bind to 'asgard'? [yN]: y
+1: mongodb
+2: mysql
+3: postgresql
+4: rabbitmq
+5: redis
+What kind of service?: 1
+Specify the name of the service [mongodb-10054]: agdb
+Create another? [yN]: n
+Would you like to save this configuration? [yN]: y
+Manifest written to manifest.yml.
+Creating Application: OK
+Creating Service [agdb]: OK
+Binding Service [agdb]: OK
+Uploading Application:
+  Checking for available resources: OK
+  Processing resources: OK
+  Packing application: OK
+  Uploading (206K): OK
+Push Status: OK
+Staging Application 'asgard': OK
+Starting Application 'asgard': OK
+
+## 使用说明（以AppFog为例）：  
+* 进入[http://asgard.aws.af.cm/setup](http://asgard.aws.af.cm/setup)
+* 录入管理员的信息。
+* 录入完毕会后跳转到[http://asgard.aws.af.cm/asgard-signin](http://asgard.aws.af.cm/asgard-signin)
+* 使用刚才录入的管理员信息进行登录操作（注意：权限选择管理员）
+* 登录后，需要分别创建【操作员】与【分类】
+* 创建成功后，就可以用操作员账户登录（注意：权限选择操作员）然后进行日志的录入。
+
 ## 更新日志：
+前台：version 1.0.4 [2013-01-26]
+* fixed bugs
+后台：version 0.6.2 [2013-01-26]
+* fixed bugs
+
 前台：version 1.0.3 [2013-01-21]
 * 增加了favicon
 * 去掉了前端页面的jquery

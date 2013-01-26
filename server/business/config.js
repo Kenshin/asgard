@@ -6,6 +6,8 @@
 
   exports.host = process.env.VCAP_APP_HOST || 'localhost';
 
+  console.log('process.env.VCAP_SERVICES = ' + process.env.VCAP_SERVICES);
+
   if (process.env.VCAP_SERVICES) {
     env = JSON.parse(process.env.VCAP_SERVICES);
     mongo = env['mongodb-1.8'][0]['credentials'];
