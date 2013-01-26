@@ -32,20 +32,21 @@ AsGard -- 基于Node.js的小型、多人日志系统
 * 安装AF - gem install af
 * 登录AF - af login（appfog的帐号）
 * push xxx -runtime=node08
-* 控制台会打印并且需要录入如下内容：（以asgard为例，具体情况视你实际情况为准） 
-Would you like to deploy from the current directory? [Yn]: y 
-Detected a Node.js Application, is this correct? [Yn]: y 
-1: AWS US East - Virginia 
-2: AWS EU West - Ireland 
-3: AWS Asia SE - Singapore 
-4: Rackspace AZ 1 - Dallas 
-5: HP AZ 2 - Las Vegas 
-Select Infrastructure: 1 
-Application Deployed URL [asgard.aws.af.cm]: 
-Memory reservation (128M, 256M, 512M, 1G, 2G) [64M]: 128 
-How many instances? [1]: 1 
-Create services to bind to 'asgard'? [yN]: y 
-1: mongodb 
+* 控制台会打印并且需要录入如下内容：（以asgard为例，具体情况视你实际情况为准）
+<pre>
+Would you like to deploy from the current directory? [Yn]: y
+Detected a Node.js Application, is this correct? [Yn]: y
+1: AWS US East - Virginia
+2: AWS EU West - Ireland
+3: AWS Asia SE - Singapore
+4: Rackspace AZ 1 - Dallas
+5: HP AZ 2 - Las Vegas
+Select Infrastructure: 1
+Application Deployed URL [asgard.aws.af.cm]:
+Memory reservation (128M, 256M, 512M, 1G, 2G) [64M]: 128
+How many instances? [1]: 1
+Create services to bind to 'asgard'? [yN]: y
+1: mongodb
 2: mysql
 3: postgresql
 4: rabbitmq
@@ -66,6 +67,7 @@ Uploading Application:
 Push Status: OK
 Staging Application 'asgard': OK
 Starting Application 'asgard': OK
+</pre>
 
 ## 使用说明（以AppFog为例）：  
 * 进入[http://asgard.aws.af.cm/setup](http://asgard.aws.af.cm/setup)
