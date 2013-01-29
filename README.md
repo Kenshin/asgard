@@ -78,15 +78,15 @@ Starting Application 'asgard': OK
 * 创建成功后，就可以用操作员账户登录（注意：权限选择操作员）然后进行日志的录入。
 
 ## 更新日志：
-前台：version 1.1.4 [2013-01-29]  
-* 升级到expres 3.1.0，ejs 0.8.3
-后台：version 0.7.2 [2013-01-29]  
-* 升级到expres 3.1.0，ejs 0.8.3
+前台：version 1.1.4 [2013-01-29]
+* 升级到expres 3.1.0，ejs 0.8.3  
+后台：version 0.7.2 [2013-01-29]
+* 升级到expres 3.1.0，ejs 0.8.3  
 
-前台：version 1.0.4 [2013-01-26]  
-* fixed bugs
-后台：version 0.6.2 [2013-01-26]  
-* fixed bugs
+前台：version 1.0.4 [2013-01-26]
+* fixed bugs  
+后台：version 0.6.2 [2013-01-26]
+* fixed bugs  
 
 前台：version 1.0.3 [2013-01-21]
 * 增加了favicon
