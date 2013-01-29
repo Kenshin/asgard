@@ -460,11 +460,11 @@
               </div>
 
               <div id="operatorModal" class="modal hide fade">
-                <%- partial( "operator-modal" ) %>
+                <% include operator-modal.html %>
               </div>
 
               <div id="categoryModal" class="modal hide fade">
-                <%- partial( "category-modal" ) %>
+                <% include category-modal.html %>
               </div>
 
             </section>
@@ -532,13 +532,13 @@
           </section>
 
           <section id="profileModal" class="modal hide fade">
-            <%- partial( "profile-modal" ) %>
+            <% include profile-modal.html %>
           </section>
 
     </section>
 
     <!--- footer -->
-    <%- partial( "footer" ) %>
+    <% include footer.html %>
 
   </body>
 

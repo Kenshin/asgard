@@ -59,7 +59,7 @@ exports.edit = ( req, res ) ->
 	#
 	operators_model.once random + '_operators_findusername_success', ( result ) ->
 		#console.log '_operators_findusername_success =' + result
-		res.partial 'back-end/operator-modal', { operator : result }
+		res.render 'back-end/operator-modal', { operator : result }
 	operators_model.once random + '_operators_findusername_error', ( err ) ->
 		console.log '_operators_findusername_error = ' + err
 	operators_model.findUsername OperatorsModel, req.params.username, random
@@ -101,7 +101,7 @@ exports.delete = ( req, res ) ->
 	#call findAll
 	operators_model.once random + '_operators_delete_success', ( result ) ->
 		console.log '_operators_delete_success = ' + result
-		res.partial 'back-end/success'
+		res.render 'back-end/success'
 	operators_model.once random + '_operators_delete_error', ( err ) ->
 		console.log '_operators_delete_error = ' + err
 	#exec
@@ -120,9 +120,9 @@ exports.checkunique = ( req, res ) ->
 	operators_model.once random + '_operators_findusername_success', ( result ) ->
 		console.log '_operators_findusername_success =' + result + '|'
 		if `result == '' || result == null`
-			res.partial 'back-end/success'
+			res.render 'back-end/success'
 		else
-			res.partial 'back-end/unsuccess'
+			res.render 'back-end/unsuccess'
 	operators_model.once random + '_operators_findusername_error', ( err ) ->
 		console.log '_operators_findusername_error = ' + err
 	operators_model.findUsername OperatorsModel, req.params.username, random

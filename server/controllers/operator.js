@@ -53,7 +53,7 @@
     console.log('req.params.username = ' + req.params.username);
     random = require('../libs/random').random;
     operators_model.once(random + '_operators_findusername_success', function(result) {
-      return res.partial('back-end/operator-modal', {
+      return res.render('back-end/operator-modal', {
         operator: result
       });
     });
@@ -98,7 +98,7 @@
     random = require('../libs/random').random;
     operators_model.once(random + '_operators_delete_success', function(result) {
       console.log('_operators_delete_success = ' + result);
-      return res.partial('back-end/success');
+      return res.render('back-end/success');
     });
     operators_model.once(random + '_operators_delete_error', function(err) {
       return console.log('_operators_delete_error = ' + err);
@@ -113,9 +113,9 @@
     operators_model.once(random + '_operators_findusername_success', function(result) {
       console.log('_operators_findusername_success =' + result + '|');
       if (result == '' || result == null) {
-        return res.partial('back-end/success');
+        return res.render('back-end/success');
       } else {
-        return res.partial('back-end/unsuccess');
+        return res.render('back-end/unsuccess');
       }
     });
     operators_model.once(random + '_operators_findusername_error', function(err) {

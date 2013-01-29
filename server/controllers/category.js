@@ -44,7 +44,7 @@
     console.log('req.params.catename = ' + req.params.catename);
     random = require('../libs/random').random;
     categories_model.once(random + '_categories_findcatename_success', function(result) {
-      return res.partial('back-end/category-modal', {
+      return res.render('back-end/category-modal', {
         category: result
       });
     });
@@ -87,7 +87,7 @@
     random = require('../libs/random').random;
     categories_model.once(random + '_categories_delete_success', function(result) {
       console.log('_categories_delete_success = ' + result);
-      return res.partial('back-end/success');
+      return res.render('back-end/success');
     });
     categories_model.once(random + '_categories_delete_error', function(err) {
       return console.log('_categories_delete_error = ' + err);
@@ -102,9 +102,9 @@
     categories_model.once(random + '_categories_findcatename_success', function(result) {
       console.log('_categories_findcatename_success =' + result + '|');
       if (result == '' || result == null) {
-        return res.partial('back-end/success');
+        return res.render('back-end/success');
       } else {
-        return res.partial('back-end/unsuccess');
+        return res.render('back-end/unsuccess');
       }
     });
     categories_model.once(random + '_categories_findcatename_error', function(err) {

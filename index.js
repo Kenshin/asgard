@@ -14,12 +14,12 @@
 
   MongoStore = require('connect-mongo')(express);
 
-  app = module.exports = express.createServer();
+  app = module.exports = express();
 
   app.configure = function() {
     app.set('views', __dirname + '/client/views');
     app.set('view engine', 'html');
-    app.register('.html', require('ejs'));
+    app.engine('html', require('ejs').renderFile);
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express["static"](__dirname + '/client/public'));

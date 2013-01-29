@@ -140,7 +140,7 @@ exports.delete = ( req, res ) ->
 	#delete from contents-model
 	contents_model.once random + '_contents_delete_success', ( result ) ->
 		console.log '_contents_delete_success = ' + result
-		res.partial 'back-end/success'
+		res.render 'back-end/success'
 	contents_model.once random + '_contents_delete_error', ( err ) ->
 		console.log '_contents_delete_error = ' + err
 	contents_model.delete ContentsModel, req.params.uid, random
@@ -161,9 +161,9 @@ exports.checkunique = ( req, res ) ->
 	contents_model.once random + '_contents_findurl_success', ( result ) ->
 		console.log '_contents_findurl_success =' + result + '|'
 		if `result == '' || result == null`
-			res.partial 'back-end/success'
+			res.render 'back-end/success'
 		else
-			res.partial 'back-end/unsuccess'
+			res.render 'back-end/unsuccess'
 	contents_model.once random + '_contents_findurl_error', ( err ) ->
 		console.log '_contents_findurl_error = ' + err
 	contents_model.findURL ContentsModel, req.params.url, random

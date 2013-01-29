@@ -10,13 +10,15 @@ MongoStore = require( 'connect-mongo' )( express )
 #test       = require './test-services'
 
 #set app
-app = module.exports = express.createServer()
+#app = module.exports = express.createServer()
+app = module.exports = express()
 
 #set default app configure
 app.configure = ->
 	app.set 'views', __dirname + '/client/views'
 	app.set 'view engine', 'html'
-	app.register '.html', require 'ejs'
+	#app.register '.html', require 'ejs' #express引擎升级为3.x，此方法失效
+	app.engine 'html', require( 'ejs' ).renderFile #express 3.x使用engine方法
 	app.use express.bodyParser()
 	app.use express.methodOverride()
 	app.use express.static __dirname + '/client/public'

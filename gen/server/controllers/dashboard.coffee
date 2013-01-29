@@ -52,7 +52,7 @@ exports.page = page = ( req, res ) ->
 	#call findAll
 	contents_model.once random + '_contents_findall_success', ( result ) ->
 		if req.xhr
-			res.partial 'back-end/content-table', { contents : result, pv : pv }
+			res.render 'back-end/content-table', { contents : result, pv : pv }
 		else
 			#如果当前用户为admin的话，就继续取得operators和categories
 			if member.role is 'admin' then operator.getoperators req, res, result, pv, getOperatorsHandler else res.render 'back-end/dashboard', { member : member, contents : result, pv : pv }

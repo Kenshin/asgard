@@ -50,7 +50,7 @@ exports.edit = ( req, res ) ->
 	#
 	categories_model.once random + '_categories_findcatename_success', ( result ) ->
 		#console.log '_categories_findcatename_success =' + result
-		res.partial 'back-end/category-modal', { category : result }
+		res.render 'back-end/category-modal', { category : result }
 	categories_model.once random + '_categories_findcatename_error', ( err ) ->
 		console.log '_categories_findcatename_error = ' + err
 	categories_model.findCatename CategoriesModel, req.params.catename, random
@@ -90,7 +90,7 @@ exports.delete = ( req, res ) ->
 	#call findAll
 	categories_model.once random + '_categories_delete_success', ( result ) ->
 		console.log '_categories_delete_success = ' + result
-		res.partial 'back-end/success'
+		res.render 'back-end/success'
 	categories_model.once random + '_categories_delete_error', ( err ) ->
 		console.log '_categories_delete_error = ' + err
 	#exec
@@ -109,9 +109,9 @@ exports.checkunique = ( req, res ) ->
 	categories_model.once random + '_categories_findcatename_success', ( result ) ->
 		console.log '_categories_findcatename_success =' + result + '|'
 		if `result == '' || result == null`
-			res.partial 'back-end/success'
+			res.render 'back-end/success'
 		else
-			res.partial 'back-end/unsuccess'
+			res.render 'back-end/unsuccess'
 	categories_model.once random + '_categories_findcatename_error', ( err ) ->
 		console.log '_categories_findcatename_error = ' + err
 	categories_model.findCatename CategoriesModel, req.params.catename, random

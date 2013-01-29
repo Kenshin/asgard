@@ -49,7 +49,7 @@
     pv = getpagination();
     contents_model.once(random + '_contents_findall_success', function(result) {
       if (req.xhr) {
-        return res.partial('back-end/content-table', {
+        return res.render('back-end/content-table', {
           contents: result,
           pv: pv
         });

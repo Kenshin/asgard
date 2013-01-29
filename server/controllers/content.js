@@ -125,7 +125,7 @@
     random = require('../libs/random').random;
     contents_model.once(random + '_contents_delete_success', function(result) {
       console.log('_contents_delete_success = ' + result);
-      return res.partial('back-end/success');
+      return res.render('back-end/success');
     });
     contents_model.once(random + '_contents_delete_error', function(err) {
       return console.log('_contents_delete_error = ' + err);
@@ -141,9 +141,9 @@
     contents_model.once(random + '_contents_findurl_success', function(result) {
       console.log('_contents_findurl_success =' + result + '|');
       if (result == '' || result == null) {
-        return res.partial('back-end/success');
+        return res.render('back-end/success');
       } else {
-        return res.partial('back-end/unsuccess');
+        return res.render('back-end/unsuccess');
       }
     });
     contents_model.once(random + '_contents_findurl_error', function(err) {
