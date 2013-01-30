@@ -4,13 +4,13 @@ AsGard -- 基于Node.js的小型、多人日志系统
 ## 应用说明：  
 * 可以用于搭建CMS系统；多人/单人Blog；小型团队日志系统等。
 
-## 搭建环境（技术选型）：  
-* Node.js
-* MongoDB
-* Coffee
-* express
-* ejs
-* mongoose
+## 环境依赖：  
+* Node.js  version 0.8.18
+* MongoDB  version 2.0.5
+* Coffee   version 1.3.3
+* express  version 3.1.0
+* ejs      version 0.8.3
+* mongoose version 2.6.5
 * bootstrap（用于后台管理界面模板）
 
 ## 特点：  
@@ -26,7 +26,15 @@ AsGard -- 基于Node.js的小型、多人日志系统
 * 登录地址：[http://asgard.cloudfoundry.com/asgard-signin](http://asgard.cloudfoundry.com/asgard-signin)
 * 用户名：demo    密码：demo1
 
-## 安装说明（以AppFog为例）：  
+## 本机运行环境安装说明：  
+* git clone git://github.com/Kenshin/asgard.git
+* 解压缩到任意目录，如：e:\asgard
+* 启动MongoDB mongod --dbpath e:\mongodb\asdb
+* 运行Coffee e:\asgard\bat\asgard.bat
+* 启动Node node index
+* 浏览器键入 http://localhost:10080/steup
+
+## 远程运行环境安装说明： （以AppFog为例） 
 * 需要操作系统用于Ruby与Gem环境。
 * 如gem版本过低，请使用gem update --system升级gem版本
 * 安装AF - gem install af
@@ -80,6 +88,13 @@ Starting Application 'asgard': OK
 ## 更新日志：  
 
 ###前台：
+
+version 1.2.4 [2013-01-30]
+* 将client\views\front 改为 client\views\front-end
+* index.init 改为 index.articles
+* client\public\front 改为 client\public\front-end
+* controller\index.coffee 改为 controller\front.coffee
+* 优化了index.coffee的文章页、分页、用户页、文章详细页的算法
 
 version 1.1.4 [2013-01-29]
 * 升级到expres 3.1.0，ejs 0.8.3  

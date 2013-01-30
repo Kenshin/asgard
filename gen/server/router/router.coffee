@@ -1,11 +1,12 @@
+#back end
 sign      = require '../controllers/sign'
 dashboard = require '../controllers/dashboard'
 content   = require '../controllers/content'
 operator  = require '../controllers/operator'
 admin     = require '../controllers/admin'
 category  = require '../controllers/category'
-
-index     = require '../controllers/index'
+#front end
+front     = require '../controllers/front'
 
 exports = module.exports = ( app ) ->
 
@@ -32,7 +33,7 @@ exports = module.exports = ( app ) ->
 	app.post '/setup', admin.add
 
 	###################
-	# index
+	# front
 	###################
 	
 	########################################################
@@ -43,14 +44,15 @@ exports = module.exports = ( app ) ->
 	#	res.redirect '/t/:url'
 	########################################################
 
-	#index
+	#front
 	app.get '/', ( req, res ) ->
 
 		#打印
 		console.log '-- / -- '
+		console.log '-- req.headers -- ' + req.headers[ 'user-agent' ]
 
 		#进入首页
-		index.init req, res
+		front.articles req, res
 
 		######################################################
 		#暂时直接重定向到asgard-signin页面
@@ -58,24 +60,24 @@ exports = module.exports = ( app ) ->
 		######################################################
 	
 	#首页的分页
-	app.get '/index/:page', index.init
+	app.get '/index/:page', front.articles
 	
 	#分类
-	app.get '/category/:catename', index.category
+	app.get '/category/:catename', front.category
 	#分类（分页）
-	app.get '/category/:catename/:page', index.category
+	app.get '/category/:catename/:page', front.category
 	
 	#用户
-	app.get '/member/:operator', index.operator
+	app.get '/member/:operator', front.operator
 	#用户（分页）
-	app.get '/member/:operator/:page', index.operator
+	app.get '/member/:operator/:page', front.operator
 
 	###################
 	# detail
 	###################
 	
 	#文章详细页
-	app.get '/t/:url', index.detail
+	app.get '/t/:url', front.detail
 
 	###################
 	# sign
