@@ -130,8 +130,28 @@ exports.detail = ( req, res ) ->
 
 #category.getcategoies callback
 getCategoiesHandler = ( req, res, obj, result ) ->
+	#print user agent
+	console.log '-- req.headers -- ' + req.headers[ 'user-agent' ]
+	#判断ua是 Destop 环境 还是 Mobile 环境
+	ua = req.headers[ 'user-agent' ]
+	if ua.search(/iPod/) is -1 and 
+	   ua.search(/iPhone/) is -1 and 
+	   ua.search(/iPad/) is -1 and 
+	   ua.search(/Kindle/) is -1 and 
+	   ua.search(/Android/) is -1 and 
+	   ua.search(/Opera Mini/) is -1 and 
+	   ua.search(/BlackBerry/) is -1 and 
+	   ua.search(/webOS/) is -1 and 
+	   ua.search(/UCWEB/) is -1 and 
+	   ua.search(/Blazer/) is -1 and 
+	   ua.search(/PSP/) is -1 and 
+	   ua.search(/IEMobile/) is -1 
+	then prefix = 'front-end' else prefix = 'm'
+	#print prefix
+	console.log 'prefix = ' + prefix
+
 	#res.render
 	if state != 'detail'
-		res.render 'front-end/index', { contents : obj.contents, pv : obj.pv, categories : result, state : state }
+		res.render prefix + '/index', { contents : obj.contents, pv : obj.pv, categories : result, state : state }
 	else 
-		res.render 'front-end/detail', { content : obj.contents, categories : result }
+		res.render prefix + '/detail', { content : obj.contents, categories : result }

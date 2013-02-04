@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+
+        <meta charset="UTF-8" />
+        <meta content="True" name="HandheldFriendly" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+
+        <title>AsGard -- 基于Node.js的开源日志系统</title>
+
+        <link rel="stylesheet" type="text/css" media="screen"  href="/front-end/css/shared.css?v=0.0.1" />
+        <link rel="stylesheet" type="text/css" media="screen"  href="/front-end/css/mobile.css?v=0.0.1" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <meta name="description" content="" />
+        
+    </head>
+
+    <body>
+
+        <div id="Wrapper">
+
+            <div class="content">
+                
+                <div class="box papaer detail_box_radius" style="border-bottom: 0px;">
+                    
+                    <div class="header">
+
+                        <div class="nav">
+                            
+                            <a href="/"><strong>首页</strong></a>
+
+                            <span class="chevron">&nbsp;›&nbsp;</span>
+                            
+                            <a href="/category/<%- content.catename %>">
+                                <strong><%- content.catealias %></strong>
+                            </a>
+                        
+                        </div>
+                            
+                        <div class="sep10 wrapper"></div>
+
+                        <!--
+                        <div class="cell" style="padding: 5px;">
+
+                            <% categories.forEach( function( category ) { %>
+                                <a href="/category/<%- category.catename %>" class="tab">
+                                   <%- category.alias  %>
+                                </a>
+                            <% }) %>
+                        
+                        </div>
+                        -->
+                        
+                        <div class="title">
+                            <h1><%- content.title %></h1>
+                                
+                            <small class="gray">
+                                By
+                                <a href="/member/<%- content.username %>">
+                                    <%- content.username %>
+                                </a>
+                                &nbsp;
+                            </small>
+                        </div>
+
+                    </div>
+                            
+                    <div class="cell">
+                        <div class="topic_content">
+                            <%- content.content %>
+                        </div>
+                    </div>
+
+                    <div class="topic_buttons">
+                        
+                        <div class="fr gray f11" style="line-height: 12px; padding-top: 3px; text-shadow: 0px 1px 0px #fff;"></div>
+                        <div id="topic_thank"></div>
+                        
+                    </div>
+                        
+                </div>
+
+            </div>
+        </div>
+
+        <!--- footer -->
+        <% include ../front-end/footer.html %>
+        
+    </body>
+
+</html>

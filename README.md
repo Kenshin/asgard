@@ -89,6 +89,10 @@ Starting Application 'asgard': OK
 
 ###前台：
 
+version 2.2.5 [2013-02-04]
+* 修复了front-end\index.html与detail.htmlCSS路径的错误。
+* 前端页面增加了Mobile浏览界面
+
 version 1.2.4 [2013-01-30]
 * 将client\views\front 改为 client\views\front-end
 * index.init 改为 index.articles

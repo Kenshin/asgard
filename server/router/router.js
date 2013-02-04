@@ -33,7 +33,6 @@
     app.post('/setup', admin.add);
     app.get('/', function(req, res) {
       console.log('-- / -- ');
-      console.log('-- req.headers -- ' + req.headers['user-agent']);
       return front.articles(req, res);
     });
     app.get('/index/:page', front.articles);

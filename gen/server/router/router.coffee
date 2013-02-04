@@ -49,7 +49,6 @@ exports = module.exports = ( app ) ->
 
 		#打印
 		console.log '-- / -- '
-		console.log '-- req.headers -- ' + req.headers[ 'user-agent' ]
 
 		#进入首页
 		front.articles req, res

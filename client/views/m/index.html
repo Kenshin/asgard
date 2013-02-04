@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+
+        <meta charset="UTF-8" />
+        <meta content="True" name="HandheldFriendly" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+
+        <title>AsGard -- 基于Node.js的开源、小型、多人日志系统</title>
+
+        <link rel="stylesheet" type="text/css" media="screen"  href="/front-end/css/shared.css?v=0.0.1" />
+        <link rel="stylesheet" type="text/css" media="screen"  href="/front-end/css/mobile.css?v=0.0.1" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <meta name="description" content="" />
+        
+    </head>
+
+    <body>
+
+        <div id="Wrapper">
+
+            <div class="content">
+                
+                <div class="box detail_box_radius">
+
+                    <%
+                        if ( state == 'index' ) {
+                    %>
+                        <div class="nav headline"> 
+                            <a href="/"><strong>AsGard -- 基于Node.js的开源日志系统</strong></a>
+                        </div>
+                    <%
+                        }
+                        else if ( state == 'category' ) {
+                    %>
+                        <div class="nav nav_1">
+                            
+                            <a href="/"><strong>首页</strong></a>
+
+                            <span class="chevron">&nbsp;›&nbsp;</span>
+                            
+                            <a href="/category/<%- contents[0].catealias %>">
+                                <strong><%- contents[0].catealias %></strong>
+                            </a>
+                        
+                        </div>
+                    <%
+                        }
+                        else if ( state == 'operator' ) {
+                    %>
+                        <div class="nav nav_1">
+                            
+                            <a href="/"><strong>首页</strong></a>
+
+                            <span class="chevron">&nbsp;›&nbsp;</span>
+                            
+                            <a href="/category/<%- contents[0].username %>">
+                                <strong><%- contents[0].username %></strong>
+                            </a>
+                        
+                        </div>
+                    <%
+                        }
+                    %>
+
+                    <div class="sep10 wrapper"></div>
+
+                    <div class="cell" style="padding: 5px;">
+
+                        <% categories.forEach( function( category ) { %>
+                            <a href="/category/<%- category.catename %>" class="tab">
+                               <%- category.alias  %>
+                            </a>
+                        <% }) %>
+
+                        <!--
+                        <a href="/?tab=tech" class="tab">技术</a>
+                        -->
+                    
+                    </div>
+
+                    <% contents.forEach( function( content ) { %>
+
+                        <div class="cell item">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+
+                                    <td width="5"></td>
+                                    
+                                    <td width="auto" valign="middle">
+
+                                        <span class="small fade">
+
+                                            <a class="node" href="/category/<%- content.catename %>">
+                                                <%- content.catealias %>
+                                            </a>
+
+                                             &nbsp;•&nbsp; 
+
+                                            <strong>
+                                                <a href="/member/<%- content.username %>">
+                                                    <%- content.username %>
+                                                </a>
+                                            </strong>
+
+                                        </span>
+
+                                        <div class="sep5"></div>
+
+                                        <span class="item_title">
+                                            <a href="/t/<%- content.url %>">
+                                                <%- content.title %>
+                                            </a>
+                                        </span>
+
+                                        <div class="sep5"></div>
+
+                                    </td>
+
+                                    <td width="40" align="right" valign="middle">
+                                        
+                                        <a href="/t/<%- content.url %>" class="count_livid">
+                                            more
+                                        </a>
+                                        
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+                    <% }) %>
+
+                    <!--
+                    <div class="cell item">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                
+                                <td width="24" valign="top" align="center"><a href="/member/Livid"><img src="http://cdn.v2ex.com/avatar/c4ca/4238/1_normal.png?m=1353664649" class="avatar" border="0" align="default" style="max-width: 24px; max-height: 24px;" /></a></td>
+                                <td width="10"></td>
+                                
+                                <td width="auto" valign="middle"><span class="small fade"><a class="node" href="/go/ubuntu">Ubuntu</a> &nbsp;•&nbsp; <strong><a href="/member/Livid">Livid</a></strong></span>
+                                    <div class="sep5"></div>
+                                    <span class="item_title"><a href="/t/59706#reply4">Ubuntu 12.04 LTS 英文版安装中文输入法的步骤</a></span>
+                                <div class="sep5"></div>
+                                <span class="small fade">4 分钟前 &nbsp;•&nbsp; 最后回复 <strong><a href="/member/Livid">Livid</a></strong></span>
+                                </td>
+                                <td width="40" align="right" valign="middle">
+                                    
+                                    <a href="/t/59706#reply4" class="count_livid">4</a>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    -->
+
+                    <div class="inner">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <%
+                                        var prefix = null;
+                                        if ( state == 'index' )         prefix = '/index/';
+                                        else if ( state == 'category' ) prefix = '/category/' + contents[0].catename + '/'
+                                        else if ( state == 'operator' ) prefix = '/member/' + contents[0].username + '/'
+                                    %>
+                                    
+                                    <% if ( pv.isprevious ) { %>
+                                        <td width="120" align="left"><input type="button" onclick="location.href = '<%- prefix + pv.previous %>'" value="‹ 上一页" class="super normal button"></td>
+                                    <% } else { %>
+                                        <td width="120" align="left"></td>
+                                    <% } %>
+                                    <td width="auto" align="center"><strong class="fade"><%- pv.page %>/<%- pv.lastpage %></strong></td>
+                                    <% if ( pv.isnext ) { %>
+                                        <td width="120" align="right"><input type="button" onclick="location.href = '<%- prefix + pv.next %>';" value="下一页 ›" class="super normal button"></td>
+                                    <% } else { %>
+                                        <td width="120" align="right"></td>
+                                    <% } %>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--- footer -->
+        <% include ../front-end/footer.html %>
+        
+    </body>
+
+</html>
