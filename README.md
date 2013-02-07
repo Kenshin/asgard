@@ -87,11 +87,25 @@ Starting Application 'asgard': OK
 
 ## 更新日志：  
 
-###前台：
+###Mobile端（前台）：
 
-version 2.2.5 [2013-02-04]
-* 修复了front-end\index.html与detail.htmlCSS路径的错误。
+version 1.0.4 [2013-02-06]
+* m文件夹增加了head.html，用于统一index.html与detail.html中的<head>节。
+* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
+* 优化了public\front-end\css\mobile\style.css的内容。
+* 分离了front-end与m文件夹中的footer.html
+
+version 1.0.0 [2013-02-04]
 * 前端页面增加了Mobile浏览界面
+
+###Web端（前台）：
+
+version 1.2.7 [2013-02-06]
+* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
+* 分离了front-end的head，并优化了<link>节点，使之更符合H5的语法。
+
+version 1.2.5 [2013-02-04]
+* 修复了front-end\index.html与detail.htmlCSS路径的错误。
 
 version 1.2.4 [2013-01-30]
 * 将client\views\front 改为 client\views\front-end
@@ -114,6 +128,12 @@ version 1.0.2 [2013-01-19]
 * release
 
 ###后台：
+
+version 0.7.4 [2013-02-07]
+* 修复“当访问首页时，发现取出的contents总数为0，则跳转到setup页面”而未跳转的bug。
+
+version 0.7.3 [2013-02-06]
+* 优化了后台管理模块的页面结构（scritp调整到后面，加快页面的载入）
 
 version 0.7.2 [2013-01-29]
 * 升级到expres 3.1.0，ejs 0.8.3  

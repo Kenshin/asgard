@@ -31,7 +31,7 @@ exports.articles = ( req, res ) ->
 		#console log
 		console.log '-- _contents_count_success --'
 		#invoke page
-		getpagination req, res, result, pageno
+		if result is 0 then res.redirect '/setup' else getpagination req, res, result, pageno
 	contents_model.once random + '_contents_count_error', ( err ) ->
 		console.log '_contents_count_error = ' + err
 	#由于每次文章总数可能会发生变化，所以，需要每次重新取得pagetotal

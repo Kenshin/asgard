@@ -26,7 +26,11 @@
     state = 'index';
     contents_model.once(random + '_contents_count_success', function(result) {
       console.log('-- _contents_count_success --');
-      return getpagination(req, res, result, pageno);
+      if (result === 0) {
+        return res.redirect('/setup');
+      } else {
+        return getpagination(req, res, result, pageno);
+      }
     });
     contents_model.once(random + '_contents_count_error', function(err) {
       return console.log('_contents_count_error = ' + err);
