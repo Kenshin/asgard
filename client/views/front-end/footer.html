@@ -6,9 +6,16 @@
                             © 2013 kenshin&nbsp;<span class="snow">|</span>
                             thanks&nbsp;<a href="http://nodejs.org" class="dark" target="_blank">node.js</a> & <a href="http://www.cloudfoundry.com" class="dark" target="_blank">cloudfoundry&nbsp;</a><span class="snow">|</span> 
                             theme based on <a href="http://www.v2ex.com" class="dark" target="_blank">v2ex</a> & <a href="http://lucifr.com" class="dark" target="_blank">lucifr</a>&nbsp;<span class="snow">|</span>
-                            code name <a href="https://github.com/kenshin/asgard" class="dark" target="_blank">asgard</a> ver 1.2.7
+                            code name <a href="https://github.com/kenshin/asgard" class="dark" target="_blank">asgard</a> ver 1.3.7
                         </span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script src="/front-end/js/desktop/ua.js"></script>
+        <script>
+            var os = getSystemOS();
+            if ( os == 'chrome' )  document.getElementsByTagName("input")[0].setAttribute( 'class', 'search webkit_search' );
+            else                   document.getElementsByTagName("input")[0].setAttribute( 'class', 'search moz_search' );
+        </script>

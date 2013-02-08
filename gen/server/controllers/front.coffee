@@ -13,6 +13,8 @@ pagesize   = 5
 catename   = null
 #操作员
 operator   = null
+#search
+search     = null
 #当前状态
 state      = null
 
@@ -105,7 +107,43 @@ getpagination = ( req, res, total, pageno ) ->
 		query = { catename : catename }
 	else if state == 'operator'
 		query = { username : operator }
+	else if state == 'search'
+		re = new RegExp search, 'i'
+		query = { '$or' : [{ 'title' : re }, { 'content' : re }] }
 	contents_model.findAll ContentsModel, query, pageno, pagesize, random
+
+#search
+exports.search = ( req, res ) ->
+	#生成随机字符串
+	random = require( '../libs/random' ).random
+	#设定当前类型
+	state = 'search'
+	#print
+	console.log 'req.body.key = ' + req.body.key
+	#
+	if `req.body.key == undefined && search == null` then res.redirect '/'
+	#set search（判断语句用于判断翻页，当翻页的时候，req.body.key则为undefined）
+	search = if `req.body.key    != undefined` then req.body.key else search
+	#print
+	console.log 'search ============= ' + search
+	#set pageno
+	pageno = if `req.params.page != undefined` then req.params.page else 1
+	#print
+	console.log 'pageno ============= ' + pageno
+	#call findAll
+	contents_model.once random + '_contents_searchcount_success', ( result ) ->
+		#console log
+		console.log '-- _contents_searchcount_success --' + result
+		#call page function
+		if result > 0 then getpagination req, res, result, pageno else res.redirect '/'
+	contents_model.once random + '_contents_searchcount_error', ( err ) ->
+		console.log '_contents_searchcount_error = ' + err
+	#set regexp
+	re = new RegExp search, 'i'
+	#set query
+	query = { '$or' : [{ 'title' : re }, { 'content' : re }] }
+	#call search
+	contents_model.searchCount ContentsModel, query, random
 
 #文章详细页
 exports.detail = ( req, res ) ->
@@ -134,18 +172,18 @@ getCategoiesHandler = ( req, res, obj, result ) ->
 	console.log '-- req.headers -- ' + req.headers[ 'user-agent' ]
 	#判断ua是 Destop 环境 还是 Mobile 环境
 	ua = req.headers[ 'user-agent' ]
-	if ua.search(/iPod/) is -1 and 
-	   ua.search(/iPhone/) is -1 and 
-	   ua.search(/iPad/) is -1 and 
-	   ua.search(/Kindle/) is -1 and 
-	   ua.search(/Android/) is -1 and 
-	   ua.search(/Opera Mini/) is -1 and 
-	   ua.search(/BlackBerry/) is -1 and 
-	   ua.search(/webOS/) is -1 and 
-	   ua.search(/UCWEB/) is -1 and 
-	   ua.search(/Blazer/) is -1 and 
-	   ua.search(/PSP/) is -1 and 
-	   ua.search(/IEMobile/) is -1 
+	if ua.search( /iPod/    )    is -1 and 
+	   ua.search( /iPhone/  )    is -1 and 
+	   ua.search( /iPad/    )    is -1 and 
+	   ua.search( /Kindle/  )    is -1 and 
+	   ua.search( /Android/ )    is -1 and 
+	   ua.search( /Opera Mini/ ) is -1 and 
+	   ua.search( /BlackBerry/ ) is -1 and 
+	   ua.search( /webOS/      ) is -1 and 
+	   ua.search( /UCWEB/      ) is -1 and 
+	   ua.search( /Blazer/     ) is -1 and 
+	   ua.search( /PSP/        ) is -1 and 
+	   ua.search( /IEMobile/   ) is -1 
 	then prefix = 'front-end' else prefix = 'm'
 	#print prefix
 	console.log 'prefix = ' + prefix

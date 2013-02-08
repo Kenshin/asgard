@@ -40,6 +40,8 @@
     app.get('/category/:catename/:page', front.category);
     app.get('/member/:operator', front.operator);
     app.get('/member/:operator/:page', front.operator);
+    app.post('/search', front.search);
+    app.get('/search/:page', front.search);
     app.get('/t/:url', front.detail);
     app.get('/asgard-signin', function(req, res) {
       console.log('-- asgard-signin(GET) -- ');

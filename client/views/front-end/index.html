@@ -7,7 +7,7 @@
         <% include head.html %>
         
         <title>AsGard -- 基于Node.js的开源、小型、多人日志系统</title>
-        
+
     </head>
     
     <body>
@@ -43,7 +43,7 @@
                                 </table>
                             </div>
                         <% }) %>
-
+                       
                         <!-- 模板 -->
                         <!--
                         <div class="cell">
@@ -64,6 +64,11 @@
                     </div>
                     
                     <div class="sep20"></div>
+
+                    <form action="/search" method="post">
+                        <input type="text" name="key" size="20" class="search" >
+                        <input type="submit" value="站内查询 ›" class="super normal button search_submit" >
+                    </form>
 
                 </div>
 
@@ -107,6 +112,17 @@
                                 <a href="/category/<%- contents[0].username %>">
                                     <strong><%- contents[0].username %></strong>
                                 </a>
+                            
+                            </div>
+                        <%
+                            }
+                            else if ( state == 'search' ) {
+                        %>
+                            <div class="nav nav_1">
+                                
+                                <a href="/"><strong>首页</strong></a>
+    
+                                <span class="chevron">&nbsp;›&nbsp;查询结果</span>
                             
                             </div>
                         <%
@@ -158,6 +174,7 @@
                                             if ( state == 'index' )         prefix = '/index/';
                                             else if ( state == 'category' ) prefix = '/category/' + contents[0].catename + '/'
                                             else if ( state == 'operator' ) prefix = '/member/' + contents[0].username + '/'
+                                            else if ( state == 'search' )   prefix = '/search/'
                                         %>
                                         
                                         <% if ( pv.isprevious ) { %>
@@ -224,7 +241,7 @@
             
         <!--- footer -->
         <% include footer.html %>
-        
+
     </body>
 
 </html>

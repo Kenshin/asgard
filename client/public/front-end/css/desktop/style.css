@@ -5,3 +5,30 @@ h1 {
     margin: 0px 0px 10px 0px;
     padding: 0px;
 }
+
+.search {
+	-moz-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	-webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+	background-clip: padding-box;
+	border-radius: 0.3em;
+	border: 1px solid #B3B3B3;
+	color: #778087;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.webkit_search {
+	padding: 0 0 3px 9px;
+	width: 159px;
+	height: 22px;
+}
+
+.moz_search {
+    padding: 0 0 0 9px;
+    width: 150px;
+    height: 25px;
+}
+
+.search_submit {
+	height: 26px;
+}

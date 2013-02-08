@@ -89,59 +89,65 @@ Starting Application 'asgard': OK
 
 ###Mobile端（前台）：
 
-version 1.0.4 [2013-02-06]
+version 1.0.4 [2013-02-06]  
 * m文件夹增加了head.html，用于统一index.html与detail.html中的<head>节。
 * public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
 * 优化了public\front-end\css\mobile\style.css的内容。
 * 分离了front-end与m文件夹中的footer.html
 
-version 1.0.0 [2013-02-04]
+version 1.0.0 [2013-02-04]  
 * 前端页面增加了Mobile浏览界面
 
 ###Web端（前台）：
 
-version 1.2.7 [2013-02-06]
+version 1.3.7 [2013-02-7]  
+* 增加了search界面（分别适应Chrome、FireFox等浏览器）
+
+version 1.2.7 [2013-02-06]  
 * public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
 * 分离了front-end的head，并优化了<link>节点，使之更符合H5的语法。
 
-version 1.2.5 [2013-02-04]
+version 1.2.5 [2013-02-04]  
 * 修复了front-end\index.html与detail.htmlCSS路径的错误。
 
-version 1.2.4 [2013-01-30]
+version 1.2.4 [2013-01-30]  
 * 将client\views\front 改为 client\views\front-end
 * index.init 改为 index.articles
 * client\public\front 改为 client\public\front-end
 * controller\index.coffee 改为 controller\front.coffee
 * 优化了index.coffee的文章页、分页、用户页、文章详细页的算法
 
-version 1.1.4 [2013-01-29]
+version 1.1.4 [2013-01-29]  
 * 升级到expres 3.1.0，ejs 0.8.3  
 
-version 1.0.4 [2013-01-26]
+version 1.0.4 [2013-01-26]  
 * fixed bugs
 
-version 1.0.3 [2013-01-21]
+version 1.0.3 [2013-01-21]  
 * 增加了favicon
 * 去掉了前端页面的jquery
 
-version 1.0.2 [2013-01-19]
+version 1.0.2 [2013-01-19]  
 * release
 
 ###后台：
 
-version 0.7.4 [2013-02-07]
+version 0.8.4 [2013-02-08]  
+* 增加站内查询逻辑。
+
+version 0.7.4 [2013-02-07]  
 * 修复“当访问首页时，发现取出的contents总数为0，则跳转到setup页面”而未跳转的bug。
 
-version 0.7.3 [2013-02-06]
+version 0.7.3 [2013-02-06]  
 * 优化了后台管理模块的页面结构（scritp调整到后面，加快页面的载入）
 
-version 0.7.2 [2013-01-29]
+version 0.7.2 [2013-01-29]  
 * 升级到expres 3.1.0，ejs 0.8.3  
 
-version 0.6.2 [2013-01-26]
+version 0.6.2 [2013-01-26]  
 * fixed bugs  
 
-version 0.6.0 [2013-01-18]
+version 0.6.0 [2013-01-18]  
 * release
 
 ## 联系方式：

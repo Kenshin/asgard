@@ -91,3 +91,13 @@ exports.delete = ( obj, uid, random ) ->
 					exports.emit random + '_contents_delete_error', err
 		else
 			exports.emit random + '_contents_delete_error', err
+
+#########################################################################
+#search
+#模糊查询contents表中的title和content字段
+exports.searchCount = ( obj, query, random ) ->
+	obj.find query, ( err, contents ) ->
+		if not err 
+			exports.emit random + '_contents_searchcount_success', contents.length
+		else
+			exports.emit random + '_contents_searchcount_error', err

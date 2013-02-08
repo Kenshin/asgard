@@ -71,6 +71,11 @@ exports = module.exports = ( app ) ->
 	#用户（分页）
 	app.get '/member/:operator/:page', front.operator
 
+	#全站查询
+	app.post '/search', front.search
+	#全站查询（分页）
+	app.get '/search/:page', front.search
+
 	###################
 	# detail
 	###################

@@ -131,4 +131,14 @@
     });
   };
 
+  exports.searchCount = function(obj, query, random) {
+    return obj.find(query, function(err, contents) {
+      if (!err) {
+        return exports.emit(random + '_contents_searchcount_success', contents.length);
+      } else {
+        return exports.emit(random + '_contents_searchcount_error', err);
+      }
+    });
+  };
+
 }).call(this);
