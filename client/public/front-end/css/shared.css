@@ -314,7 +314,7 @@ ol {
     -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     border-bottom: 2px solid #fef8ee;
-    border-bottom: 2px solid #e2e2e9;
+    //border-bottom: 2px solid #e2e2e9;
 }
 
 .detail_box_radius {

@@ -99,3 +99,26 @@ a.tab_current:hover {
     color: #fff;
     text-decoration: none;
 }
+
+/* search */
+
+.search_box {
+    width: 276px;
+    background-image: url('/front-end/css/assets/qbar.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 2px 0px 0px 25px;
+    height: 23px;
+}
+
+.search {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: background-color;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 222px;
+    height: 20px;
+    font-size: 12px;
+}

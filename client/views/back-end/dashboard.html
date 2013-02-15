@@ -42,14 +42,26 @@
       * remove current content
       */
       function deleteContent( uid ) {
-        $.get( "/dashboard/content/delete/" + uid, function( data ) {
-          if ( data == 'success' ) {
-            $( '#content' + uid ).remove()
-            if ( $.trim( $( '#tbody' ).html()) == '' ) {
-              var str = $( '#member' ).val() == 'admin' ? '<div class="center">无内容，请使用 操作员 帐号登陆，并创建新内容</div>' 
-                                                        : '<div class="center">无内容，请 <a href="/dashboard/content/new">创建新内容</a></div>'
-              $( '#contentTable' ).html( str );
-            }
+        alertify.set({ labels: { ok: "确认", cancel: "取消" }, buttonFocus : 'none' });
+        alertify.confirm( '确认删除？', function ( e, str ) {
+          if ( e ) {
+            $.get( "/dashboard/content/delete/" + uid, function( data ) {
+              if ( data == 'success' ) {
+                alertify.success( '删除成功！' );
+                $( '#content' + uid ).remove()
+                if ( $.trim( $( '#tbody' ).html()) == '' ) {
+                  var str = $( '#member' ).val() == 'admin' ? '<div class="center">无内容，请使用 操作员 帐号登陆，并创建新内容</div>' 
+                                                            : '<div class="center">无内容，请 <a href="/dashboard/content/new">创建新内容</a></div>'
+                  $( '#contentTable' ).html( str );
+                }
+              }
+              else if ( result == 'unsuccess' ) {
+                alertify.error( '删除失败，请重新操作！' );
+              }
+            });
+          }
+          else {
+            //TO DO
           }
         });
       }
@@ -166,12 +178,24 @@
       * delete operator
       */
       function deleteOperator( username ) {
-        $.get( "/dashboard/operator/delete/" + username, function( data ) {
-          if ( data == 'success' ) {
-            $( '#operator-' + username ).remove()
-            if ( $.trim( $( '#operatorTbody' ).html()) == '' ) {
-              $( '#operatorTable' ).remove();
-            }
+        alertify.set({ labels: { ok: "确认", cancel: "取消" }, buttonFocus : 'none' });
+        alertify.confirm( '确认删除？', function ( e, str ) {
+          if ( e ) {
+            $.get( "/dashboard/operator/delete/" + username, function( data ) {
+              if ( data == 'success' ) {
+                alertify.success( '删除成功！' );
+                $( '#operator-' + username ).remove()
+                if ( $.trim( $( '#operatorTbody' ).html()) == '' ) {
+                  $( '#operatorTable' ).remove();
+                }
+              }
+              else if ( result == 'unsuccess' ) {
+                alertify.error( '删除失败，请重新操作！' );
+              }
+            });
+          }
+          else {
+            //TO DO
           }
         });
       }
@@ -247,16 +271,28 @@
       * delele category
       */
       function deleteCategory( catename ) {
-        $.get( "/dashboard/category/delete/" + catename, function( result ) {
+        alertify.set({ labels: { ok: "确认", cancel: "取消" }, buttonFocus : 'none' });
+        alertify.confirm( '确认删除？', function ( e, str ) {
+          if ( e ) {
+            $.get( "/dashboard/category/delete/" + catename, function( result ) {
 
-          if ( result == 'success' ) {
-            $( '#category-' + catename ).remove()
-            if ( $.trim( $( '#categoriesTbody' ).html()) == '' ) {
-              $( '#categoriesTable' ).remove();
-            }
+              if ( result == 'success' ) {
+                alertify.success( '删除成功！' );
+                $( '#category-' + catename ).remove()
+                if ( $.trim( $( '#categoriesTbody' ).html()) == '' ) {
+                  $( '#categoriesTable' ).remove();
+                }
+              }
+              else if ( result == 'unsuccess' ) {
+                alertify.error( '删除失败，请重新操作！' );
+              }
+            });
+           }
+          else {
+            //TO DO
           }
         });
-      }
+     }
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -543,6 +579,11 @@
     <script src="/back-end/validation/js/jquery.validationEngine.js"></script>
     <script src="/back-end/validation/js/jquery.validationEngine-zh_CN.js"></script>
     <link href="/back-end/validation/css/validationEngine.jquery.css" rel="stylesheet" />
+
+    <!-- alertify -->
+    <script src="/back-end/alertify/js/alertify.min.js"></script>
+    <link href="/back-end/alertify/css/alertify.core.css" rel="stylesheet" />
+    <link href="/back-end/alertify/css/alertify.bootstrap.css" rel="stylesheet" />
 
   </body>
 

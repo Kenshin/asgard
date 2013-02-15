@@ -184,7 +184,7 @@ getCategoiesHandler = ( req, res, obj, result ) ->
 	   ua.search( /Blazer/     ) is -1 and 
 	   ua.search( /PSP/        ) is -1 and 
 	   ua.search( /IEMobile/   ) is -1 
-	then prefix = 'front-end' else prefix = 'm'
+	then prefix = 'front-end/desktop' else prefix = 'front-end/mobile'
 	#print prefix
 	console.log 'prefix = ' + prefix
 

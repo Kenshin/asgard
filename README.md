@@ -89,10 +89,17 @@ Starting Application 'asgard': OK
 
 ###Mobile端（前台）：
 
+version 1.1.6 [2013-02-14]  
+* 优化了mobile的文件结构，由 \client\views\m\*.* → \client\views\front-end\mobile\*.* （与publick文件夹结构对应）
+
+version 1.1.5 [2013-02-13]  
+* 修复了\client\public\front-end\css\shared.css的一个bug。  
+* mobile web增加了search界面。
+
 version 1.0.4 [2013-02-06]  
-* m文件夹增加了head.html，用于统一index.html与detail.html中的<head>节。
-* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
-* 优化了public\front-end\css\mobile\style.css的内容。
+* m文件夹增加了head.html，用于统一index.html与detail.html中的<head>节。  
+* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。  
+* 优化了public\front-end\css\mobile\style.css的内容。  
 * 分离了front-end与m文件夹中的footer.html
 
 version 1.0.0 [2013-02-04]  
@@ -100,21 +107,27 @@ version 1.0.0 [2013-02-04]
 
 ###Web端（前台）：
 
-version 1.3.7 [2013-02-7]  
-* 增加了search界面（分别适应Chrome、FireFox等浏览器）
+version 1.3.9 [2013-02-14]  
+* 优化了desktop的文件结构，由 \client\views\front-end\*.* → \client\views\front-end\desktop\*.* （与publick文件夹结构对应）
+
+version 1.3.8 [2013-02-13]  
+* 修复了\client\public\front-end\css\shared.css的一个bug。
+
+version 1.3.7 [2013-02-07]  
+* 增加了search界面。
 
 version 1.2.7 [2013-02-06]  
-* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。
+* public\front-end\css文件夹增加了desktop与mobile子文件夹，用于分别放置相应的Destop/Mobile的CSS文件。  
 * 分离了front-end的head，并优化了<link>节点，使之更符合H5的语法。
 
 version 1.2.5 [2013-02-04]  
 * 修复了front-end\index.html与detail.htmlCSS路径的错误。
 
 version 1.2.4 [2013-01-30]  
-* 将client\views\front 改为 client\views\front-end
-* index.init 改为 index.articles
-* client\public\front 改为 client\public\front-end
-* controller\index.coffee 改为 controller\front.coffee
+* 将client\views\front 改为 client\views\front-end  
+* index.init 改为 index.articles  
+* client\public\front 改为 client\public\front-end  
+* controller\index.coffee 改为 controller\front.coffee  
 * 优化了index.coffee的文章页、分页、用户页、文章详细页的算法
 
 version 1.1.4 [2013-01-29]  
@@ -131,6 +144,10 @@ version 1.0.2 [2013-01-19]
 * release
 
 ###后台：
+
+version 0.9.4 [2013-02-15]  
+* 当删除分类、用户、内容时，返回删除成功提示（Alertify方式）
+* 当删除分类、用户、内容时，进行二次确认（Alertify方式）
 
 version 0.8.4 [2013-02-08]  
 * 增加站内查询逻辑。

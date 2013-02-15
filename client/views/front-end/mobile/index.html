@@ -34,8 +34,7 @@
                         
                         </div>
                     <%
-                        }
-                        else if ( state == 'operator' ) {
+                        } else if ( state == 'operator' ) {
                     %>
                         <div class="nav nav_1">
                             
@@ -48,13 +47,36 @@
                             </a>
                         
                         </div>
+
+                    <%
+                        } else if ( state == 'search' ) {
+                    %>
+                        <div class="nav nav_1">
+                            
+                            <a href="/"><strong>首页</strong></a>
+
+                            <span class="chevron">&nbsp;›&nbsp;查询结果</span>
+                        
+                        </div>
                     <%
                         }
                     %>
 
                     <div class="sep10 wrapper"></div>
 
-                    <div class="cell" style="padding: 5px;">
+                    <div id="search" class="cell item">
+
+                        <form action="/search" method="post">
+                            <div class="search_box">
+                                <input type="text" name="key" size="20" class="search" placeholder="站内检索" >
+                            </div>
+                        </form>
+
+                        <div style="height:12px;"></div>
+
+                    </div>
+
+                    <div class="cell item" style="padding: 5px;">
 
                         <% categories.forEach( function( category ) { %>
                             <a href="/category/<%- category.catename %>" class="tab">
@@ -152,7 +174,8 @@
                                         var prefix = null;
                                         if ( state == 'index' )         prefix = '/index/';
                                         else if ( state == 'category' ) prefix = '/category/' + contents[0].catename + '/'
-                                        else if ( state == 'operator' ) prefix = '/member/' + contents[0].username + '/'
+                                        else if ( state == 'operator' ) prefix = '/member/'   + contents[0].username + '/'
+                                        else if ( state == 'search' )   prefix = '/search/'
                                     %>
                                     
                                     <% if ( pv.isprevious ) { %>

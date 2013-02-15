@@ -177,9 +177,9 @@
     console.log('-- req.headers -- ' + req.headers['user-agent']);
     ua = req.headers['user-agent'];
     if (ua.search(/iPod/) === -1 && ua.search(/iPhone/) === -1 && ua.search(/iPad/) === -1 && ua.search(/Kindle/) === -1 && ua.search(/Android/) === -1 && ua.search(/Opera Mini/) === -1 && ua.search(/BlackBerry/) === -1 && ua.search(/webOS/) === -1 && ua.search(/UCWEB/) === -1 && ua.search(/Blazer/) === -1 && ua.search(/PSP/) === -1 && ua.search(/IEMobile/) === -1) {
-      prefix = 'front-end';
+      prefix = 'front-end/desktop';
     } else {
-      prefix = 'm';
+      prefix = 'front-end/mobile';
     }
     console.log('prefix = ' + prefix);
     if (state !== 'detail') {
