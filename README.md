@@ -14,16 +14,16 @@ AsGard -- 基于Node.js的开源、小型、多人日志系统
 * bootstrap（用于后台管理界面模板）
 
 ## 特点：  
-* 全自动部署（具有setup功能，只要将源代码push到cloudfoundry后即可完成搭建）
+* 全自动部署（具有setup功能，只要将源代码push到cloudfoundry|appfog后即可完成搭建）
 * 代码采用MVC框架
 * 后台管理系统与前台文章浏览系统单独分开，因此一个后台可以“挂”多个前台系统
 * 权限分离。（目前只有管理员与操作员两种角色，互不干扰）
 
 ## 测试地址：  
-* [http://asgard.cloudfoundry.com/](http://asgard.cloudfoundry.com/)
+* [http://asgard.k-zone.cn/](http://asgard.k-zone.cn)
 
 ## 测试账户：  
-* 登录地址：[http://asgard.cloudfoundry.com/asgard-signin](http://asgard.cloudfoundry.com/asgard-signin)
+* 登录地址：[http://asgard.k-zone.cn/asgard-signin](http://asgard.k-zone.cn/asgard-signin)
 * 用户名：demo    密码：demo1
 
 ## 本机运行环境安装说明：  
@@ -107,6 +107,10 @@ version 1.0.0 [2013-02-04]
 
 ###Web端（前台）：
 
+version 1.3.10 [2013-02-17]  
+* 增加了独立域名：[asgard.k-zone.cn](http://asgard.k-zone.cn)
+* host on appfog
+
 version 1.3.9 [2013-02-14]  
 * 优化了desktop的文件结构，由 \client\views\front-end\*.* → \client\views\front-end\desktop\*.* （与publick文件夹结构对应）
 
@@ -144,6 +148,9 @@ version 1.0.2 [2013-01-19]
 * release
 
 ###后台：
+
+version 0.9.5 [2013-02-17]  
+* host on appfog
 
 version 0.9.4 [2013-02-15]  
 * 当删除分类、用户、内容时，返回删除成功提示（Alertify方式）
