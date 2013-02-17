@@ -24,7 +24,7 @@ AsGard -- 基于Node.js的开源、小型、多人日志系统
 
 ## 测试账户：  
 * 登录地址：[http://asgard.k-zone.cn/asgard-signin](http://asgard.k-zone.cn/asgard-signin)
-* 用户名：demo    密码：demo1
+* 用户名：demo    密码：demo
 
 ## 本机运行环境安装说明：  
 * git clone git://github.com/Kenshin/asgard.git
@@ -78,12 +78,13 @@ Starting Application 'asgard': OK
 </pre>
 
 ## 使用说明（以AppFog为例）：  
-* 进入[http://asgard.aws.af.cm/setup](http://asgard.aws.af.cm/setup)
+* 进入[http://asgard.k-zone.cn/setup](http://asgard.k-zone.cn/setup)
 * 录入管理员的信息。
-* 录入完毕会后跳转到[http://asgard.aws.af.cm/asgard-signin](http://asgard.aws.af.cm/asgard-signin)
+* 录入完毕会后跳转到[http://asgard.k-zone.cn/asgard-signin](http://asgard.k-zone.cn/asgard-signin)
 * 使用刚才录入的管理员信息进行登录操作（注意：权限选择管理员）
 * 登录后，需要分别创建【操作员】与【分类】
 * 创建成功后，就可以用操作员账户登录（注意：权限选择操作员）然后进行日志的录入。
+* 注意：上述的URL以AppFog给出的为准。
 
 ## 更新日志：  
 
