@@ -20,10 +20,12 @@ AsGard -- 基于Node.js的开源、小型、多人日志系统
 * 权限分离。（目前只有管理员与操作员两种角色，互不干扰）
 
 ## 测试地址：  
-* [http://asgard.k-zone.cn/](http://asgard.k-zone.cn)
+* [http://asgard.k-zone.cn](http://asgard.k-zone.cn)（需翻墙）
+* [http://asgard.cloudfondry.com](http://asgard.cloudfondry.com)（备用地址）
 
 ## 测试账户：  
 * 登录地址：[http://asgard.k-zone.cn/asgard-signin](http://asgard.k-zone.cn/asgard-signin)
+* 备用地址：[http://asgard.cloudfondry.com/asgard-signin](http://asgard.cloudfondry.com/asgard-signin)
 * 用户名：demo    密码：demo
 
 ## 本机运行环境安装说明：  
